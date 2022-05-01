@@ -54,7 +54,7 @@
             android:layout_marginTop="10dp"
             android:maxLines="1"
             android:inputType="numberPassword"
-            android:drawableEnd="@drawable/ic_eye"
+            android:drawableEnd="@drawable/ic_lock"
             android:maxLength="30"
             />
 
