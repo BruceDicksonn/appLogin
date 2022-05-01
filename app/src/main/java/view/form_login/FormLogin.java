@@ -129,13 +129,6 @@ public class FormLogin extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void messageSucess(View view,String message){
-        Snackbar snackbar = Snackbar.make(view ,message, Snackbar.LENGTH_LONG);
-        snackbar.setText(message);
-        snackbar.setBackgroundTint(Color.parseColor("#386D3A")); // this color is a dark green
-        snackbar.show();
-    }
-
     public void messageError(View view,String message){
         Snackbar snackbar = Snackbar.make(view ,message, Snackbar.LENGTH_LONG);
         snackbar.setText(message);

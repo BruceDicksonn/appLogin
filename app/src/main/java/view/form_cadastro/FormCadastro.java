@@ -68,7 +68,7 @@ public class FormCadastro extends AppCompatActivity {
 
                               auth.signOut();//Desloga, se não o user é dado como logado no sistema
                               p.setVisibility(View.INVISIBLE);
-                              messageSucess(view,"Cadastrado com sucesso!");
+                              messageSuccess(view,"Cadastrado com sucesso!");
                               limparDados();
 
 
@@ -146,7 +146,7 @@ public class FormCadastro extends AppCompatActivity {
         btnCadastrar = findViewById(R.id.btnCadastrar);
     }
 
-    public void messageSucess(View view,String message){
+    public void messageSuccess(View view,String message){
         Snackbar snackbar = Snackbar.make(view ,message, Snackbar.LENGTH_LONG);
         snackbar.setText(message);
         snackbar.setBackgroundTint(Color.parseColor("#386D3A")); // this color is a dark green
