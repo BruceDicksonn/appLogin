@@ -45,8 +45,6 @@ public class FormCadastro extends AppCompatActivity {
 
         btnCadastrar.setOnClickListener(new View.OnClickListener() {
 
-            boolean signInSucessful = false;
-
             @Override
             public void onClick(View view) {
 
@@ -84,8 +82,6 @@ public class FormCadastro extends AppCompatActivity {
 
                                   }
                               },3025);
-
-
 
                               } else {
                                   String messageError = "";
