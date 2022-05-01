@@ -3,6 +3,7 @@ package view.form_cadastro;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.accounts.NetworkErrorException;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -24,6 +25,7 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 
 import factory.FactoryFirebaseInstances;
+import view.form_login.FormLogin;
 
 public class FormCadastro extends AppCompatActivity {
 
@@ -42,6 +44,9 @@ public class FormCadastro extends AppCompatActivity {
         initComponents();
 
         btnCadastrar.setOnClickListener(new View.OnClickListener() {
+
+            boolean signInSucessful = false;
+
             @Override
             public void onClick(View view) {
 
@@ -55,6 +60,7 @@ public class FormCadastro extends AppCompatActivity {
 
                    } else {
 
+
                         ProgressBar p = findViewById(R.id.progress);
                         p.setVisibility(View.VISIBLE);
 
@@ -62,10 +68,25 @@ public class FormCadastro extends AppCompatActivity {
 
                               if(cadastro.isSuccessful()){
 
-                                  messageSucess(view,"Cadastrado com sucesso!");
-                                  limparDados();
+                              auth.signOut();//Desloga, se não o user é dado como logado no sistema
+                              p.setVisibility(View.INVISIBLE);
+                              messageSucess(view,"Cadastrado com sucesso!");
+                              limparDados();
 
-                                  p.setVisibility(View.INVISIBLE);
+
+                              /* Delay antes de mandar para a outra tela */
+                              new Handler().postDelayed(new Runnable() {
+                                  @Override
+                                  public void run() {
+
+                                      navegarTelaLogin(); // parte p/ tela de login após o cadastro
+                                      finish();
+
+                                  }
+                              },3025);
+
+
+
                               } else {
                                   String messageError = "";
 
@@ -107,10 +128,14 @@ public class FormCadastro extends AppCompatActivity {
                               }
                         });
                    }
-
             }
         });
 
+    }
+
+    public void navegarTelaLogin(){
+        Intent intent = new Intent(getApplicationContext(), FormLogin.class);
+        startActivity(intent);
     }
 
     public void limparDados(){

@@ -51,6 +51,7 @@ public class FormLogin extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), FormCadastro.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -81,6 +82,7 @@ public class FormLogin extends AppCompatActivity {
                                         if(task.isSuccessful()){
 
                                             navegarTelaPrincipal();
+                                            finish();
 
                                         } else {
 
@@ -125,7 +127,6 @@ public class FormLogin extends AppCompatActivity {
     private void navegarTelaPrincipal(){
         Intent intent = new Intent(this, TelaPrincipal.class);
         startActivity(intent);
-        finish();
     }
 
     public void messageSucess(View view,String message){
